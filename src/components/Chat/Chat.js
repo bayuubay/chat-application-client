@@ -13,17 +13,12 @@ const Chat = ({ location }) => {
   const [room, setRoom] = useState("");
   const [message, setMessage] = useState("");
   const [messages, setMessages] = useState([]);
-  const ENDPOINT = "https://chat-apps-server.herokuapp.com/";
+  const ENDPOINT = "https://chat-apps-server.herokuapp.com";
 
   useEffect(() => {
     const { name, room } = queryString.parse(location.search);
     // console.log(name);
-    socket = io(ENDPOINT, {
-      withCredentials: true,
-      extraHeaders: {
-        "my-custom-header": "abcd",
-      },
-    });
+    socket = io(ENDPOINT);
     setName(name);
     setRoom(room);
     socket.emit("join", { name, room }, () => {});
