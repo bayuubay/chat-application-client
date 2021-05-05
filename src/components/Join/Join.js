@@ -4,8 +4,17 @@ import { Link } from "react-router-dom";
 
 import "./Join.css";
 const Join = () => {
-  const chatLink = (event) => (!name || !room ? event.preventDefault() : null);
-
+  // const chatLink = (event) => (!name || !room ? event.preventDefault() : null);
+  const chatLink = (event) => {
+    const roomInt=Number(room)
+    if(!name||!room||roomInt){
+      alert("RoomID must be text")
+      return event.preventDefault()
+    }else{
+      
+     return null
+    }
+  };
   const [name, setName] = useState("");
   const [room, setRoom] = useState("");
   // console.log(setRoom(event.target.value))
